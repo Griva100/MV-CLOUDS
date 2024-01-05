@@ -1,0 +1,31 @@
+<!-- 14.Write a JavaScript function that accepts a String with space-separated numbers
+and returns the highest and lowest number (as a string).
+Ex. User Input : "1 2 3 4 5"
+Output : "5 1" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Return highest and lowest number from the string. </h3>
+    <br/>
+    <p> Enter a String with space-separated numbers : </p>
+    <input type="text" id="userInput"/>
+    <button onclick="return_num()">Submit</button>
+    <p id="result"></p>
+    <script>
+        function return_num(){
+            var userString = document.getElementById("userInput").value;
+            var arr = userString.split(" ")
+            var max_num = Math.max(...arr);
+            var min_num = Math.min(...arr);
+            var result = max_num + " " + min_num;
+            document.getElementById("result").innerHTML = "Output: "+ result;
+        }
+    </script>
+</body>
+</html>

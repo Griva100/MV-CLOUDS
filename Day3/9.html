@@ -1,0 +1,31 @@
+<!-- 9."Create a function that moves all capital letters to the front of a word.
+Ex. ""hApPy"" ➞ APhpy""" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Move all capital letters to the front of a word </h3>
+    <br/>
+    <p> Enter a String : </p>
+    <input type="text" id="userInput"/>
+    <button onclick="move_letter()">Submit</button>
+    <p id="result"></p>
+    <script>
+        function move_letter() {
+            var StringValue = document.getElementById("userInput").value
+            if(StringValue!= null){
+                var chars = StringValue.split('');
+                var CapitalLetters = chars.filter(char=>char==char.toUpperCase());
+                var SmallLetters = chars.filter(char=>char==char.toLowerCase());
+                var resultStr = CapitalLetters.concat(SmallLetters).join('') ;
+                document.getElementById("result").innerHTML = "Result String: "+resultStr;
+            } 
+        }
+    </script>
+</body>
+</html>

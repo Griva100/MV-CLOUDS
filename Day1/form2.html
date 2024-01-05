@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="form2.css">
+</head>
+<body>
+    <form class="signup-form" id="signupform" action=" " method=" ">
+ 
+      <div class="form-header">
+        <h1>Create Account</h1>
+      </div>
+ 
+      <div class="form-body">
+ 
+        <div class="horizontal-group">
+          <div class="form-group left">
+            <label for="firstname" class="label-title">First name *</label>
+            <input type="text" id="firstname" name="firstname" class="form-input" placeholder="enter your first name" required="required" />
+          </div>
+          <div class="form-group right">
+            <label for="lastname" class="label-title">Last name</label>
+            <input type="text" id="lastname" name="lastname" class="form-input" placeholder="enter your last name" />
+          </div>
+        </div>
+
+         <div class="form-group">
+          <label for="email" class="label-title">Email*</label>
+          <input type="email" id="email" name="email" form-input" placeholder="enter your email" required="required">
+        </div>
+ 
+        <div class="horizontal-group">
+          <div class="form-group left">
+            <label for="password" class="label-title">Password *</label>
+            <input type="password" id="password" name="password" class="form-input" placeholder="enter your password" required="required">
+          </div>
+          <div class="form-group right">
+            <label for="confirm-password" class="label-title">Confirm Password *</label>
+            <input type="password" class="form-input" id="confirm-password" name="confirm-password" placeholder="enter your password again" required="required">
+          </div>
+        </div>
+ 
+        <div class="horizontal-group">
+          <div class="form-group left">
+            <label class="label-title">Gender:</label>
+            <div class="input-group">
+              <label for="male"><input type="radio" name="gender" value="male" id="male"> Male</label>
+              <label for="female"><input type="radio" name="gender" value="female" id="female"> Female</label>
+            </div>
+          </div>
+          <div class="form-group right">
+            <label class="label-title">Hobbies</label>
+            <div >
+              <label><input type="checkbox" value="Music" name="hobbies">Music</label>
+              <label><input type="checkbox" value="Sports" name="hobbies">Sports</label>
+              <label><input type="checkbox" value="Travel" name="hobbies">Travel</label>
+              <label><input type="checkbox" value="Movies" name="hobbies">Movies</label>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="horizontal-group">
+          <div class="form-group left" >
+            <label class="label-title">Source of Income</label>
+            <select class="form-input" id="level" >
+              <option value="e" name="source">Employed</option>
+              <option value="s" name="source">Self-employed</option>
+              <option value="u" name="source">Unemployed</option>
+            </select>
+          </div>
+          
+          <div class="form-group right">
+            <label for="experience" class="label-title">Income</label>
+            <input type="range" min="20" max="100" step="5"  value="0" id="experience" class="form-input" name="income" style="height:28px;width:78%;padding:0;">
+            <span id="range-label">20K</span>
+          </div>
+        </div>
+ 
+        <div class="horizontal-group">
+          <div class="form-group left" >
+            <label for="choose-file" name="picture" class="label-title">Upload Profile Picture</label>
+            <input type="file" id="choose-file" size="80">
+          </div>
+          <div class="form-group right">
+            <label for="experience" class="label-title">Age</label>
+            <input type="number" name="age" min="18" max="80"  value="18" class="form-input">
+          </div>
+        </div>
+ 
+        <div class="form-group">
+          <label for="choose-file" class="label-title">Bio</label>
+          <textarea class="form-input" name="bio" rows="4" cols="50" style="height:auto"></textarea>
+        </div>
+      </div>
+ 
+      <div class="form-footer">
+          
+        <button type="submit" name="submit" class="btn" id="submit">Create</button>
+      </div>
+
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

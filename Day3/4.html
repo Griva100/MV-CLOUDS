@@ -1,0 +1,36 @@
+<!-- 4. "JavaScript program to display multiplication tables using user input integer
+value.
+Ex. User Input: 2
+2 * 1 = 2
+2 * 2 = 4
+….
+2 * 10 = 20" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Multiplication Table </h3>
+    <br/>
+    <input type="text" placeholder="Enter a Number" id="userInput"/>
+    <button onclick="displayMultiplicationTable()">Submit</button>
+    <p id="result"></p>
+    <script>
+        function displayMultiplicationTable() {
+            var num = document.getElementById("userInput").value
+            if(num!= null){
+                var res = document.getElementById("result")
+                res.innerHTML = "Multiplication Table for " + num + "<br>";
+                    for (var i = 1; i <= 10; i++) {
+                        res.innerHTML += "<tr><td>" + num + " x " + i + "= " + num*i + "</td></tr> <br>";
+                    }        
+            }
+        }
+    </script>
+</body>
+</html>
+  

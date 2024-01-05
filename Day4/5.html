@@ -1,0 +1,41 @@
+<!-- 5. Create a separate group for consecutive ascending numbers from the given
+string. ex: 1235689. Output : 123 56 89 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> separate group for consecutive ascending numbers  </h2>
+    Enter the string:<input type="text" id="string" name="string"><br>
+    <button onclick="separate_consecutive_ascending_grp()">Submit</button>
+    <div id="display"></div>
+    <script>
+        function separate_consecutive_ascending_grp(){
+            var str = document.getElementById("string").value;
+            var res = [];
+            var grp = "";
+            for(let i=0;i<str.length;i++){
+                var currentdigit = parseInt(str[i]);
+                if(i>0 && currentdigit==parseInt(str[i-1])+1){
+                    grp += str[i];
+                }
+                else{
+                    if(grp != ""){
+                        res.push(grp);
+                    }
+                    grp = str[i];
+                }
+            }
+            if(grp != ""){
+                res.push(grp);
+            }
+            var Output = res.join(" ")
+            document.getElementById("display").innerHTML = "Output : "+Output;
+        }
+    </script>
+</body>
+</html>

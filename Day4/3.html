@@ -1,0 +1,41 @@
+<!-- Create a program which will display the time remaining from the current date to
+the entered date. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p> Dispaly remaining Time </p>
+    Enter Date: <input type="date" id="date" name="date"><br>
+    <button onclick="calculateTime()">Submit</button>
+    <div id="display"></div>
+    <script>
+        function calculateTime(){
+            var userDate = document.getElementById("date").value;
+            var now = new Date();
+            var now_ms = now.getTime();
+            var d = now.getDate();
+            var m = now.getMonth() + 1;
+            var y = now.getFullYear();
+            m = (m < 10) ? "0"+m : m;
+            d = (d < 10) ? "0"+d : d;
+            var dt = d+"-"+m+"-"+y;
+            var usrDate = new Date(userDate);
+            var diff = usrDate.getTime() - now_ms;
+            if(diff > 0){
+                var hr = Math.floor((diff/1000)/3600);
+                var min = Math.floor((diff/1000)/60) - Math.floor(hr*60);
+                var sec = Math.round((diff/1000)) - Math.floor(min*60);
+                document.getElementById("display").innerHTML = "There is "+ hr +" hours " + min + " minute " + sec + " sec left from the "+ dt + " Date ";
+            }
+            else{
+                document.getElementById("display").innerHTML = "The target date has already passed!";
+            }
+        }
+    </script>
+</body>
+</html>

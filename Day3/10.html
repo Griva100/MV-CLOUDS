@@ -1,0 +1,27 @@
+<!-- 10.Sort the given string based on ASCII value. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Sort the string </h3>
+    <br/>
+    <p> Enter a String : </p>
+    <input type="text" id="userInput"/>
+    <button onclick="sort_string()">Submit</button>
+    <p id="result"></p>
+    <script>
+        function sort_string() {
+            var StringValue = document.getElementById("userInput").value
+            if(StringValue!= null){
+                var resultStr = StringValue.split('').sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0)).join('');
+                document.getElementById("result").innerHTML = "Result: "+resultStr;
+            } 
+        }
+    </script>
+</body>
+</html>

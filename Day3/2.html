@@ -1,0 +1,31 @@
+<!-- 2. "Javascript program that will return an integer number corresponding to the
+amount of digits in the given integer num.
+    Ex. num_of_digits(1000) ➞ 4
+        num_of_digits(12) ➞ 2" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Number of Digits: </h3>
+    <br/>
+    <input type="text" placeholder="Enter a Number" id="userInput"/>
+    <button onclick="num_of_digits()">Submit</button>
+    <p id="result"></p>
+    <script>
+        function num_of_digits(){
+            var num = document.getElementById("userInput").value
+            if(num!= null){
+                var strNum = String(num);
+                var digits = strNum.length;
+                document.getElementById("result").innerHTML = "The number of digits is " + digits + " for the inputted number " + num;
+            }
+            
+        }
+    </script>
+</body>
+</html>

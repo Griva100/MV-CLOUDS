@@ -1,0 +1,36 @@
+<!-- Create a program which will display the time remaining for the lunch. ex. lunch
+time: 1:00 PM, timenow : 10:30. Time remaining : 2:30. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2> Dispaly remaining Time </h2>
+    Enter Lunch Time: <input type="time" id="time" name="time"><br>
+    <button onclick="LunchTime()">Submit</button>
+    <div id="display"></div>
+    <script>
+        function LunchTime(){
+            var dateInput = document.getElementById("time").value;
+            var now = new Date();
+            var hrs = parseInt(dateInput.split(':')[0]);
+            var mins =parseInt(dateInput.split(':')[1]);
+            now.setHours(now.getHours());
+            now.setMinutes(now.getMinutes());
+            var diffHr = hrs - now.getHours();
+            var diffMins = mins - now.getMinutes();
+            if (diffMins < 0){
+                diffHr--;
+                diffMins +=60;
+            }
+            diffMins = (diffMins < 10) ? "0"+diffMins : diffMins;
+            var timeremaining = "Time Remaining: "+diffHr+":"+diffMins;
+            document.getElementById("display").innerHTML = timeremaining;
+        }
+    </script>
+</body>
+</html>

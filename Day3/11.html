@@ -1,0 +1,45 @@
+<!-- 11."Create a function that takes two or more numbers as user input and adds them
+together to get a new number. The function then repeatedly multiplies the digits
+of the new number by each other, giving a new number, until the product is
+returned only 1 digit long. Return the final value.
+EX. User input - ""16 28"" then -- 16 + 28 = 44 after this it will add digits like this
+--4 * 4 = 16 until it gets only single digit as value-- 1 * 6 = 6" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Enter two or more Numbers </h3>
+    <br/>
+    <input type="text" placeholder="Enter a Number" id="userInput"/>
+    <button onclick="process_num()">Submit</button>
+    <p id="result"></p>
+    <script>
+        function process_num(){
+            var num = document.getElementById("userInput").value;
+            var arr = num.split(" ");
+            var sum = 0;
+            for(var i=0;i<arr.length;i++){
+                sum += parseInt(arr[i]);
+            }
+            var mul = 1;
+            var arr1 = sum.toString().split("");
+            for(var j=0;j<arr1.length;j++){
+                mul *=arr1[j];
+            }
+            while(mul>=10){
+                arr1=mul.toString().split("");
+                mul=1;
+                for (var k = 0; k < arr1.length; k++) {
+                    mul *= arr1[k];
+                }
+            }
+            document.getElementById("result").innerHTML = "The Result is : "+mul;
+        }
+    </script>
+</body>
+</html>

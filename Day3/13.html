@@ -1,0 +1,40 @@
+<!-- 13.Create a JavaScript function that takes a String value as an input and capitalizes
+a letter if its ASCII value is even and returns its lowercase version if its ASCII
+value is odd.
+Ex. User Input: "THE LITTLE MERMAID"
+Output: "THe LiTTLe meRmaiD" -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> If ASCII value is even then convert into lowercase version of its ASCII. </h3>
+    <br/>
+    <p> Enter a String : </p>
+    <input type="text" id="userInput"/>
+    <button onclick="convert_string()">Submit</button>
+    <p id="result"></p>
+    <script>
+        function convert_string(){
+            var userString = document.getElementById("userInput").value;
+            var result="";
+            for (var i=0;i<userString.length;i++) {
+                var char=userString[i];
+                var asciiValue = char.charCodeAt(0);
+                if (asciiValue % 2 == 0) {
+                  result += char.toUpperCase();
+                } 
+                else {
+                  result += char.toLowerCase();
+                }
+            }
+            
+            document.getElementById("result").innerHTML=result;
+        }
+    </script>
+</body>
+</html>

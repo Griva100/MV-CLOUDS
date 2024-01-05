@@ -1,0 +1,28 @@
+<!-- 3. Write a javascript program that returns `true` if the input string includes the string
+"ee". -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Input string includes "ee"? </h3>
+    <br/>
+    <p> Enter a String : </p>
+    <input type="text" id="userInput"/>
+    <button onclick="has_ee()">Submit</button>
+    <p id="result"></p>
+    <script>
+        function has_ee() {
+            var StringValue = document.getElementById("userInput").value
+            if(StringValue!= null){
+                var result = StringValue.includes("ee");
+                document.getElementById("result").innerHTML = result;
+            } 
+        }
+    </script>
+</body>
+</html>

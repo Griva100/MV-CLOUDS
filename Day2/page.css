@@ -1,0 +1,56 @@
+.container-page{
+    background-color: rgb(235, 245, 251);
+    font-family: "Roboto";
+    width:400px;
+    margin:30px auto;
+    border: solid rgb(235,245,251) 1px;
+    border-radius: 8px;
+}
+form {
+    display: grid;
+    grid-gap: 20px;
+}
+.num{
+    font-size: 18px;
+    background-color: rgb(94, 94, 222);
+    color: white;
+    border-radius: 38px;
+    border-bottom-left-radius: 2px;
+    margin: 10px ;
+    padding: 4px;
+    text-align: center;
+}
+.label-title{ 
+    width: 350px;
+    margin-left: 20px;
+    font-weight: bold;
+}
+.page-text{
+    width: 350px;
+    margin-left: 20px;
+    background-color: rgb(216, 253, 241);
+    border-radius: 4px;
+}
+.page-info{
+    height: 20px;
+    width: 350px;
+    padding: 10% auto;
+    margin-left: 20px;
+    background-color: rgb(216, 253, 241);
+    border-radius: 4px;
+}
+h2{
+    padding: 15px;
+    margin: 5px;
+}
+select{
+    color: rgba(0,0,0,0.7);
+}
+.btn{
+    text-align: center;
+    width: 380px;
+    margin: 10px;
+    background-color:rgb(71, 71, 221) ;
+    color: white;
+    height: 43px;
+}

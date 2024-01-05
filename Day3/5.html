@@ -1,0 +1,36 @@
+<!-- 5. "Write a JavaScript function that takes a two-digit number and determines if it's
+the largest of two possible digit swaps.
+Ex:- If we give 43 as user input then it will return false because swapping 43
+gives us 34, and 43 > 34." -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> Two Digit of Number: </h3>
+    <br/>
+    <input type="text" placeholder="Enter a Number" id="userInput"/>
+    <button onclick="isLargestDigitSwap()">Submit</button>
+    <p id="result"></p>
+    <script>
+        function isLargestDigitSwap() {
+            let num = document.getElementById("userInput").value;
+            var result = document.getElementById("result")
+            let strNum = num.toString();
+            let firstDigit = strNum[0];
+            let secondDigit = strNum[1];
+            if (firstDigit >= secondDigit) {
+                result.innerHTML= "false";
+            } 
+            else {
+                result.innerHTML= "true";
+            }  
+        }           
+    </script>
+</body>
+</html>
+   
