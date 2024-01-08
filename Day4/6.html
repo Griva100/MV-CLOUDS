@@ -7,9 +7,82 @@ rows, and each row should have a download button for the corresponding image. --
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Image Table Viewer</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .download-btn {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+    <input type="file" id="fileInput" accept=".csv">
+    <button onclick="handleFile()">Load Images</button>
+
+    <table id="imageTable">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+        function handleFile() {
+            const fileInput = document.getElementById('fileInput');
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const csv = e.target.result;
+                    const rows = csv.split('\n');
+                    rows.forEach(row => {
+                        const columns = row.split(',');
+                        const imageUrl = columns[0].trim();
+                        if (imageUrl) {
+                            const newRow = tableBody.insertRow();
+                            const cell1 = newRow.insertCell(0);
+                            const cell2 = newRow.insertCell(1);
+
+                            const img = document.createElement('img');
+                            img.src = imageUrl;
+                            cell1.appendChild(img);
+
+                            const downloadBtn = document.createElement('button');
+                            downloadBtn.innerHTML = 'Download';
+                            downloadBtn.className = 'download-btn';
+                            downloadBtn.onclick = function () {
+                                window.open(imageUrl);
+                            };
+                            cell2.appendChild(downloadBtn);
+                        }
+                    });
+                };
+                reader.readAsText(file);
+            }
+        }
+    </script>
 </body>
 </html>
