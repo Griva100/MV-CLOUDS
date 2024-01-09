@@ -1,0 +1,192 @@
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container{
+    width: 100%;
+    margin: auto;
+    max-width:100%;
+    padding: 0 10px;
+    padding-left: 0;
+    text-align: center;
+    transition: transform .3s;
+    /* overflow-y:auto; */
+}
+header {
+    text-align: center;
+    background-color: blue;
+    color: #fff;
+    padding: 10px;
+    display: flex;;
+    justify-content:space-between;
+    align-items: center;
+    transition: transform .3s;
+}
+
+b{
+    font-size:x-large;
+  @import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap');
+}
+
+header .search-container{
+    /* float: right; */
+    /* justify-content: ; */
+    padding: 6px;
+    width:500px;
+}
+
+header input[type=text] {
+    max-width: 440px;
+    font-size: 15px;
+    border: none;
+}
+ 
+header .search-container button {
+    max-width: 60px;
+    float: right;
+    max-height: 60px;
+    background: #ddd;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+  }
+  
+header .search-container button:hover {
+    background: #ccc;
+}
+  
+.link{
+    padding-left: 8px;
+}
+.link a{
+    background-color:white;
+    color: #3498db;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.link a:hover {
+    background-color:#e9e4e4;
+    color:blue;
+}
+
+.link a:active {
+    background-color: #3498db;
+    /* background-color:rgb(139, 170, 219); */
+    color:white;
+}
+
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+    padding-right: 30px;
+}
+.cart-icon:hover{
+    transform: scale(1.15);
+}
+.cart-icon i{
+    font-size: 28px;
+}
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: 18px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 10px;
+}
+
+.login-container,.addproduct-container{
+    max-width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+form{
+    display: grid;
+    grid-gap: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cartTab{
+    width: 400px;
+    background-color:#ddd;
+    color:blue;
+    position: fixed;
+    top: 0;
+    right: -400px;
+    bottom: 0;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: .5s;
+}
+
+body.showCart .cartTab{
+    right: 0;
+}
+body.showCart .container{
+    transform: translateX(-250px);
+}
+
+.cartTab h1{
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+.cartTab .btn{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cartTab .close:hover{
+    color: blue;
+    background-color:#fff;
+    border: 3px solid blue;
+}
+.cartTab button{
+    font-size: 17px;
+    background-color: #E8BC0E;
+    border: none;
+    line-height: 1;
+    font-weight: 500;
+    cursor: pointer;
+}
+.cartTab .close{
+    font-size: 17px;
+    transition: all .5s ease;
+    color:#e9e4e4;
+    border: none;
+    line-height: 1;
+    text-transform: uppercase;
+    background-color :blue;
+    /* padding: 10px;
+    outline: none;
+    border-radius: 4px; */
+    /* background-color:blue; */
+}
