@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="index.css">
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
     <title>E-commerce Site</title>
 </head>
-<body>
+<body class="showCart">
 <header>
     <b> SkywardShop </b>
     <div class="search-container">
@@ -17,12 +19,12 @@
         <button type="submit"><i class="fa fa-search"></i></button>
     </div>
         <div class="link">
-            <a href="E-commerce.html">Home</a>
+            <a href="E-commerce.html">Login</a>
             <a href="add_product.html">Add product</a>
             <a href="product.html">Products</a>
         </div>
-        <div class="cart-icon" id="cart-icon">
-            <span id="cart-count">0</span>
+        <div class="cart-icon">
+            <span class="cart-count">0</span>
             <i class="fa fa-shopping-cart"></i>
         </div>
 </header>
@@ -39,7 +41,7 @@
     </form>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js" type="module"></script>
 
 </body>
 </html>

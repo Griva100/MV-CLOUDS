@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Page</title>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="index.css">
 </head>
-<body class="body">
+<body class="showCart">
     <div class="container">
         <header>
             <b> SkywardShop </b>
@@ -16,23 +18,36 @@
                 <button type="submit"><i class="fa fa-search"></i></button>
             </div>
                 <div class="link">
-                    <a href="E-commerce.html">Home</a>
-                    <a href="login.html">Login</a>
+                    <a href="E-commerce.html">Login</a>
+                    <a href="add_product.html">Add product</a>
                     <a href="product.html">Products</a>
                 </div>
-                <div class="cart-icon" id="cart-icon">
-                    <span id="cart-count">0</span>
+                <div class="cart-icon">
+                    <span class="cart-count">0</span>
                     <i class="fa fa-shopping-cart"></i>
                 </div>
         </header>
     <div class="listProduct">
-
+        <div class="item">
+            <img src="ProductImg/Mango Book Unit.jpg" alt="">
+            <h2>Mango Book Unit</h2>
+            <div class="price">41999₹</div>
+            <div class="quantity">
+                <span class="minus"><</span>
+                <span>1</span>
+                <span class="plus">></span>
+            </div>
+            <button class="addCart">Add To Cart</button>
+            
+        </div>
     </div>
     </div>
     <div class="cartTab">
         <h1>Shopping Cart</h1>
         <div class="listCart">
-            
+            <div class="item">
+                
+            </div>
         </div>
         <div class="btn">
             <button class="close">CLOSE</button>

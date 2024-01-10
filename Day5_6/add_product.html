@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Login page</title>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
     <link rel="stylesheet" href="index.css">
 </head>
-<body class="body">
+<body class="showCart">
     <header>
         <b> SkywardShop </b>
         <div class="search-container">
@@ -15,30 +17,30 @@
             <button type="submit"><i class="fa fa-search"></i></button>
         </div>
             <div class="link">
-                <a href="E-commerce.html">Home</a>
-                <a href="login.html">Login</a>
+                <a href="E-commerce.html">Login</a>
+                <a href="add_product.html">Add product</a>
                 <a href="product.html">Products</a>
             </div>
-            <div class="cart-icon" id="cart-icon">
-                <span id="cart-count">0</span>
+            <div class="cart-icon">
+                <span class="cart-count">0</span>
                 <i class="fa fa-shopping-cart"></i>
             </div>
     </header>
     <div class="addproduct-container">
         <h2>Add Product</h2>
-        <form onsubmit="validateproduct" id="productForm">
-            <label for="name">Name of Product:</label>
-            <input type="text" id="name" name="name" placeholder="product name">
-    
-            <label for="price">Price in Dollar($):</label>
-            <input type="number" step="any" id="price" name="price">
-            
+        <form id="productForm">
             <label for="link">Link:</label>
-            <input type="file" id="link" name="link">
+            <input type="url" id="link" value="" placeholder="Enter URL" name="link">
 
-            <button type="submit">Submit</button>
+            <label for="name">Name of Product:</label>
+            <input type="text" id="name" name="name" placeholder="Enter product name">
+    
+            <label for="price">Price:</label>
+            <input type="number" step="any" id="price" name="price" placeholder="Enter Price">
+
+            <button type="submit" id="submit" onclick="insert()">Submit</button>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
