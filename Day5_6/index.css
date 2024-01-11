@@ -145,6 +145,10 @@ button {
     width: 70%;
     filter: drop-shadow(0 50px 40px #0009);
 }
+
+.listProduct .item img:hover{
+    transform: scale(1.1);
+}
 .listProduct{
     padding-top: 50px;
     padding-left: 50px;
@@ -244,21 +248,22 @@ body.showCart .container{
 }
 .listCart .item{
     display: grid;
-    grid-template-columns: 70px 150px 50px 1fr;
+    grid-template-columns: 70px 150px 60px 1fr;
     gap: 10px;
     text-align: center;
     align-items: center;
 }
-.quantity span{
+.quantity button,.count{
     display: inline-block;
-    width: 25px;
-    height: 25px;
-    background-color: #eee;
+    padding: 4px;
+    width: 20px;
+    height: 20px;
+    background-color: #555;
     border-radius: 25%;
-    color: #555;
+    color: #eee;
     cursor: pointer;
 }
-.listCart .quantity span:nth-child(2){
+.listCart .quantity .count{
     background-color: transparent;
     color: blue;
     cursor: auto;

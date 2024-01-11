@@ -11,23 +11,24 @@
 <script src="https://www.gstatic.com/firebasejs/7.14.6/firebase-database.js"></script>
     <title>E-commerce Site</title>
 </head>
-<body class="showCart">
-<header>
-    <b> SkywardShop </b>
-    <div class="search-container">
-        <input type="text" name="search" placeholder="Search items..">
-        <button type="submit"><i class="fa fa-search"></i></button>
-    </div>
-        <div class="link">
-            <a href="E-commerce.html">Login</a>
-            <a href="add_product.html">Add product</a>
-            <a href="product.html">Products</a>
+<body class="" id="body">
+    <div class="container" id="container">
+    <header id="myTopnav" class="topnav">
+        <b> SkywardShop </b>
+        <div class="search-container">
+            <input type="text" name="search" placeholder="Search items..">
+            <button type="submit"><i class="fa fa-search"></i></button>
         </div>
-        <div class="cart-icon">
-            <span class="cart-count">0</span>
-            <i class="fa fa-shopping-cart"></i>
-        </div>
-</header>
+            <div class="link">
+                <a href="E-commerce.html">Login</a>
+                <a href="add_product.html">Add product</a>
+                <a href="product.html">Products</a>
+            </div>
+            <div class="cart-icon">
+                <span class="cart-count">0</span>
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+    </header>
 <div class="login-container">
     <h2>Login Form</h2>
     <form onsubmit="validateLogin()">
@@ -40,7 +41,7 @@
         <button type="submit">Submit</button>
     </form>
 </div>
-
+</div>
 <script src="script.js" type="module"></script>
 
 </body>

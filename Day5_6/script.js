@@ -219,7 +219,8 @@ let cartCountElement = document.querySelector('.cart-count');
 let cartIcon = document.querySelector(".cart-icon");
 let closeCart = document.querySelector(".close");
 let body = document.querySelector('body');
-let listproducts = [];
+let total = document.querySelector('.total');
+// let listproducts = [];
 let cart = [];
 
 cartIcon.addEventListener('click', () => {
@@ -230,138 +231,281 @@ closeCart.addEventListener('click', () => {
     body.classList.toggle('showCart');
 });
 
-const addDataToHTML = () => {
-    
-    try{
-        listProductHTML.innerHTML = " ";
-    if(listproducts.length > 0)
+let products = [
     {
-        listproducts.forEach(product => {
+        "id": 1,
+        "name":" Mango Book Unit",
+        "price": 41999,
+        "image": "ProductImg/Mango Book Unit.jpg"
+    },
+    {
+        "id": 2,
+        "name":" Green Apple Pillar Candle",
+        "price": 390,
+        "image": "ProductImg/Green Apple Pillar Candle.jpg"
+    },
+    {
+        "id": 3,
+        "name":" Dehydrated Raisins",
+        "price": 279,
+        "image": "ProductImg/Dehydrated Raisins.jpg"
+    },
+    {
+        "id": 4,
+        "name":" Rosemary Herb -45g",
+        "price": 95,
+        "image":"ProductImg/Rosemary Herb -45g.jpg"
+    },
+    {
+        "id": 5,
+        "name":" Brown Wood Naksh Side Table",
+        "price": 14900,
+        "image": "ProductImg/Brown Wood Naksh Side Table.jpg"
+    },
+    {
+        "id": 6,
+        "name":" Pushp Embossed Coffee Mug-Green",
+        "price": 399,
+        "image": "ProductImg/Pushp Embossed Coffee Mug-Green.jpg"
+    },
+    {
+        "id": 7,
+        "name":" Black Bidri Metal Bidri Wall Plate",
+        "price": 7299,
+        "image": "ProductImg/Black Bidri Metal Bidri Wall Plate.jpg"
+    },
+    
+    {
+        "id": 8,
+        "name":" Green Guldan Ceramic Cut Bud Vase",
+        "price": 299,
+        "image": "ProductImg/Green Guldan Ceramic Cut Bud Vase.jpg"
+    },
+    {
+        "id": 9,
+        "name":" Brown Arali Wooden Jar",
+        "price": 1899,
+        "image": "ProductImg/Brown Arali Wooden Jar.jpg"
+    },
+    {
+        "id": 10,
+        "name":" Rajyavati Wall Clock",
+        "price": 1272,
+        "image": "ProductImg/Rajyavati Wall Clock.jpg"
+    },
+    {
+        "id": 11,
+        "name":" Jeev pendant lamp",
+        "price": 3999,
+        "image": "ProductImg/Jeev pendant lamp.jpg"
+    },
+    {
+        "id": 12,
+        "name":" Pashav Ceramic Platter",
+        "price": 3299,
+        "image": "ProductImg/Pashav Ceramic Platter.jpg"
+    }
+    
+]
+
+const addDataToHTML = () => {
+
+    listProductHTML.innerHTML = " ";
+    if(products.length > 0)
+    {
+        products.forEach((value,key) => {
             let newProduct = document.createElement('div');
             // newProduct.dataset.id = product.id;
             newProduct.classList.add('item');
-            newProduct.dataset.id= product.id;
+            // newProduct.dataset.id= product.id;
             newProduct.innerHTML = 
-            `<img src="${product.image}" alt="">
-            <h2>${product.name}</h2>
-            <div class="price">$${product.price}</div>
-            <button class="addCart">Add To Cart</button>`;
+            `<img src="${value.image}" alt="">
+            <h2>${value.name}</h2>
+            <div class="price">$${value.price}</div>
+            <button class="addCart" onclick="addToCart(${key})">Add To Cart</button>`;
             listProductHTML.appendChild(newProduct);
         });
     }}
-    catch(err){
-        console.log("error");
+
+const addToCart = (key) => {
+    if(cart[key] == null){
+        cart[key] = JSON.parse(JSON.stringify(products[key]));
+        cart[key].cartCountElement = 1;
     }
+    reloadCard();
 }
 
-listProductHTML.addEventListener('click', (event) => {
-    let positionClick = event.target;
-    if(positionClick.classList.contains('addCart')){
-        let product_id = positionClick.parentElement.dataset.id;
-        addToCart(product_id);
-    }
-})
-
-const addToCart = (product_id) => {
-    let positionThisProductInCart = cart.findIndex((value) => value.product_id == product_id);
-    if(cart.length <= 0){
-        cart = [{
-            product_id: product_id,
-            quantity: 1
-        }];
-    }else if(positionThisProductInCart < 0){
-        cart.push({
-            product_id: product_id,
-            quantity: 1
-        });
-    }else{
-        cart[positionThisProductInCart].quantity = cart[positionThisProductInCart].quantity + 1;
-    }
-    addCartToHTML();
-    addCartToMemory();
-}
-const addCartToMemory = () => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
-const addCartToHTML = () => {
+function reloadCard(){
     listCartHTML.innerHTML = '';
-    let totalQuantity = 0;
-    if(cart.length > 0){
-        cart.forEach(item => {
-            totalQuantity = totalQuantity +  item.quantity;
-            let newItem = document.createElement('div');
-            newItem.classList.add('item');
-            let positionProduct = products.findIndex((value) => value.id == item.product_id);
-            let info = products[positionProduct];
-            newItem.innerHTML = `
+    let count = 0;
+    let totalPrice = 0;
+    cart.forEach((value, key)=>{
+        totalPrice = totalPrice + value.price;
+        count = count + value.cartCountElement;
+        if(value != null){
+            let newDiv = document.createElement('div');
+            newDiv.classList.add('item');
+            newDiv.innerHTML = `
             <div class="image">
-                    <img src="${info.image}">
-                </div>
-                <div class="name">
-                ${info.name}
-                </div>
-                <div class="totalPrice">${info.price * item.quantity}₹</div>
-                <div class="quantity">
-                    <span class="minus"><</span>
-                    <span>${item.quantity}</span>
-                    <span class="plus">></span>
-                </div>
-            `;
-            listCartHTML.appendChild(newItem);
-            // newItem.dataset.id = item.product_id;
-        })
-    }
-    cartCountElement.innerText = totalQuantity;
-}
-
-listCartHTML.addEventListener('click', (event) => {
-    let positionClick = event.target;
-    if(positionClick.classList.contains('minus') || positionClick.classList.contains('plus')){
-        let product_id = positionClick.parentElement.parentElement.dataset.id;
-        let type = 'minus';
-        if(positionClick.classList.contains('plus')){
-            type = 'plus';
-        }
-        changeQuantityCart(product_id, type);
-    }
-})
-const changeQuantityCart = (product_id, type) => {
-    let positionItemInCart = cart.findIndex((value) => value.product_id == product_id);
-    if(positionItemInCart >= 0){
-        // let info = cart[positionItemInCart];
-        switch (type) {
-            case 'plus':
-                cart[positionItemInCart].quantity = cart[positionItemInCart].quantity + 1;
-                break;
-        
-            default:
-                let changeQuantity = cart[positionItemInCart].quantity - 1;
-                if (changeQuantity > 0) {
-                    cart[positionItemInCart].quantity = changeQuantity;
-                }else{
-                    cart.splice(positionItemInCart, 1);
-                }
-                break;
-        }
-    }
-    addCartToHTML();
-    addCartToMemory();
-}
-
-const initApp = () => {
-    fetch('products.json')
-    .then(response => response.json())
-    .then(data => {
-        products = data;
-        console.log(products)
-        
-        addDataToHTML();
-
-        if(localStorage.getItem('cart')){
-            cart = JSON.parse(localStorage.getItem('cart'));
-            addCartToHTML();
+            <img src="${value.image}">
+            </div>
+            <div class="name">
+            ${value.name}
+            </div>
+            <div class="totalPrice">${value.price.toLocaleString()}$</div>
+            <div class="quantity">
+            <button onclick="changeQuantity(${key}, ${value.cartCountElement - 1})">-</button>
+            <div class="count">${value.cartCountElement}</div>
+            <button onclick="changeQuantity(${key}, ${value.cartCountElement + 1})">+</button>
+            </div>`;
+            listCartHTML.appendChild(newDiv);
         }
     })
-    .catch(error => console.error('Error fetching data:', error));
+    total.innerText = `Total:${totalPrice.toLocaleString()}$`;
+    cartCountElement.innerText = count;
+}
+function changeQuantity(key, cartCountElement){
+    if(cartCountElement == 0){
+        delete cart[key];
+    }else{
+        cart[key].cartCountElement = cartCountElement;
+        cart[key].price = cartCountElement * products[key].price;
+    }
+    reloadCard();
+}
+      
+// const addDataToHTML = () => {
+
+//     listProductHTML.innerHTML = " ";
+//     if(products.length > 0)
+//     {
+//         products.forEach(product => {
+//             let newProduct = document.createElement('div');
+//             // newProduct.dataset.id = product.id;
+//             newProduct.classList.add('item');
+//             newProduct.dataset.id= product.id;
+//             newProduct.innerHTML = 
+//             `<img src="${product.image}" alt="">
+//             <h2>${product.name}</h2>
+//             <div class="price">$${product.price}</div>
+//             <button class="addCart">Add To Cart</button>`;
+//             listProductHTML.appendChild(newProduct);
+//         });
+//     }}
+// const listproduct = () =>{
+// listProductHTML.addEventListener('click', (event) => {
+//     let positionClick = event.target;
+//     if(positionClick.classList.contains('addCart')){
+//         let product_id = positionClick.parentElement.dataset.id;
+//         addToCart(product_id);
+//     }
+// })
+// }
+
+// const addToCart = (product_id) => {
+//     let positionThisProductInCart = cart.findIndex((value) => value.product_id == product_id);
+//     if(cart.length <= 0){
+//         cart = [{
+//             product_id: product_id,
+//             quantity: 1
+//         }];
+//     }else if(positionThisProductInCart < 0){
+//         cart.push({
+//             product_id: product_id,
+//             quantity: 1
+//         });
+//     }else{
+//         cart[positionThisProductInCart].quantity = cart[positionThisProductInCart].quantity + 1;
+//     }
+//     addCartToHTML();
+//     // addCartToMemory();
+// }
+// const addCartToMemory = () => {
+//     localStorage.setItem('cart', cart);
+//     // localStorage.setItem('cart', JSON.stringify(cart));
+// }
+// const addCartToHTML = () => {
+//     listCartHTML.innerHTML = '';
+//     let totalQuantity = 0;
+//     if(cart.length > 0){
+//         cart.forEach(item => {
+//             totalQuantity = totalQuantity +  item.quantity;
+//             // let newItem = document.createElement('div');
+//             // newItem.classList.add('item');
+//             let newItem = document.getElementById('.item');
+//             let positionProduct = listproducts.findIndex((value) => value.id == item.product_id);
+//             let info = listproducts[positionProduct];
+//             newItem.innerHTML = `
+//             <div class="image">
+//                     <img src="${info.image}">
+//                 </div>
+//                 <div class="name">
+//                 ${info.name}
+//                 </div>
+//                 <div class="totalPrice">${info.price * item.quantity}₹</div>
+//                 <div class="quantity">
+//                     <span class="minus"><</span>
+//                     <span>${item.quantity}</span>
+//                     <span class="plus">></span>
+//                 </div>
+//             `;
+//             listCartHTML.appendChild(newItem);
+//             // newItem.dataset.id = item.product_id;
+//         })
+//     }
+//     cartCountElement.innerText = totalQuantity;
+// }
+
+// listCartHTML.addEventListener('click', (event) => {
+//     let positionClick = event.target;
+//     if(positionClick.classList.contains('minus') || positionClick.classList.contains('plus')){
+//         let product_id = positionClick.parentElement.parentElement.dataset.id;
+//         let type = 'minus';
+//         if(positionClick.classList.contains('plus')){
+//             type = 'plus';
+//         }
+//         changeQuantityCart(product_id, type);
+//     }
+// })
+// const changeQuantityCart = (product_id, type) => {
+//     let positionItemInCart = cart.findIndex((value) => value.product_id == product_id);
+//     if(positionItemInCart >= 0){
+//         // let info = cart[positionItemInCart];
+//         switch (type) {
+//             case 'plus':
+//                 cart[positionItemInCart].quantity = cart[positionItemInCart].quantity + 1;
+//                 break;
+        
+//             default:
+//                 let changeQuantity = cart[positionItemInCart].quantity - 1;
+//                 if (changeQuantity > 0) {
+//                     cart[positionItemInCart].quantity = changeQuantity;
+//                 }else{
+//                     cart.splice(positionItemInCart, 1);
+//                 }
+//                 break;
+//         }
+//     }
+//     addCartToHTML();
+//     addCartToMemory();
+// }
+
+const initApp = () => {
+    // fetch('products.json')
+    // .then(response => response.json())
+    // .then(data => {
+    //     products = data;
+    //     console.log(products)
+        
+        addDataToHTML();
+        // listproduct();
+
+        // if(localStorage.getItem('cart')){
+        //     cart = JSON.parse(localStorage.getItem('cart'));
+        //     addCartToHTML();
+        // }
+    // }
+    // )
+    // .catch(error => console.error('Error fetching data:', error));
 }
 initApp();
