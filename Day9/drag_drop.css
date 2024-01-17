@@ -1,27 +1,17 @@
-.maincontainer{
-    /* border: 10px solid ; */
-    /* height: 500px; */
-    width: 900px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 #main{
     background-color:blue;
     border-radius: 50%;
     width: 200px;
     height: 200px;
-    /* cursor: pointer; */
-    /* position: relative; */
+    float: left;
 }
 
 #inner{
-    z-index: 2;
     background-color:red;
     border-radius: 50%;
     width: 200px;
     height: 200px;
     cursor: grab;
-    position: absolute;
+    position:relative;
+    float: right;
 }

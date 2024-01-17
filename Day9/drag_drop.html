@@ -8,13 +8,10 @@
 </head>
 <body>
     <div class="container">
-        <div  id="inner" draggable="true"  class="innercircles" ondragstart="return dragStart(event)"></div>
+        <div  id="inner" draggable="true"  class="innercircles"></div>
     </div>
-
-    <div class="maincontainer" ondrop="dragDrop(event)" ondragover="return dragOver(event)">
-        <div id="main"  class="maincircle" ></div>
-    </div>
-
+    <div id="main" class="maincircle" ondrop="dragDrop(event)" ondragover="return dragOver(event)"></div>
+    
     <script src="drag_drop.js"></script>
     
 </body>
