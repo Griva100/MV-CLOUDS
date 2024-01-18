@@ -16,28 +16,25 @@ function dragDrop(ev) {
         if((height-(20*circle_reduce))==20){
             draggedCircle.style.height = 20+ "px";
             draggedCircle.style.width =  20+ "px";
-            console.log(draggedCircle.style.height); 
         }
         else{
             draggedCircle.style.height =(height-(20*circle_reduce))+"px";
             draggedCircle.style.width = (width - (20*circle_reduce))+ "px";
             draggedCircle.style.marginRight = "10px";
-            draggedCircle.style.marginTop = "10px";
-            console.log(height - 20 * circle_reduce); 
+            draggedCircle.style.marginTop = "10px"; 
             circle_reduce+=1;
         }
 
-        console.log('drag one circle');
         var dropCircle = document.getElementsByClassName("container")[0];
-       
+       console.log(dropCircle);
         var newDiv = document.createElement("div");
         newDiv.className = "innercircles";
         newDiv.id = "inner";
         var randomColor = `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
-        newDiv.setAttribute("style",`width:${width}px`);
-        newDiv.setAttribute("style",`height:${height}px`);
-        newDiv.setAttribute("style", `background-color:${randomColor};`);
-        newDiv.setAttribute("draggable", "true");
+        newDiv.style.width = `${width}px`;
+        newDiv.style.height = `${height}px`;
+        newDiv.style.background = `${randomColor}`;
+        newDiv.draggable = true;
         dropCircle.appendChild(newDiv);
  }
 
